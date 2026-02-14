@@ -10,7 +10,7 @@ class CoraChat {
     this.conversationState = 'greeting';
     this.userPreferences = {};
     this.sessionId = null;
-    this.apiUrl = 'http://localhost:5000/api/chat';
+    this.apiUrl = 'https://cora-chatbot-backend.onrender.com/api/chat';
     this.isLoading = false;
     
     this.init();
@@ -25,7 +25,7 @@ class CoraChat {
   
   async initializeSession() {
     try {
-      const response = await fetch(`${this.apiUrl}/session`);
+      const response = await fetch('https://cora-chatbot-backend.onrender.com/api/chat/session');
       const data = await response.json();
       this.sessionId = data.sessionId;
       this.debugLog('Session initialized:', this.sessionId);
@@ -154,7 +154,7 @@ class CoraChat {
     
     try {
       // Call backend API
-      const response = await fetch(`${this.apiUrl}/message`, {
+      const response = await fetch('https://cora-chatbot-backend.onrender.com/api/chat/message', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
