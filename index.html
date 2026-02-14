@@ -336,8 +336,23 @@
   </footer>
   
   <!-- Scripts -->
-  <script src="js/script.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/chatbot.js"></script>
+  <<script src="js/script.js"></script>
+<script src="js/forms.js"></script>
+<script src="js/chatbot.js"></script>
+
+<script>
+// FORCE CHATBOT TO LOAD
+window.addEventListener("load", () => {
+    console.log("Chatbot forcing load...");
+    try {
+        new CoraChat();
+    } catch (e) {
+        console.error("Chatbot failed:", e);
+    }
+});
+</script>
+
 </body>
 </html>
+
+
