@@ -25,7 +25,17 @@ class CoraChat {
   
   async initializeSession() {
     try {
-      const response = await fetch('https://cora-chatbot-backend.onrender.com/api/chat/session');
+      const response = await fetch(const response = await fetch(`${this.apiUrl}/api/chat`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        message: "start",
+        sessionId: this.sessionId
+    })
+});
+)
       const data = await response.json();
       this.sessionId = data.sessionId;
       this.debugLog('Session initialized:', this.sessionId);
