@@ -15,8 +15,10 @@ app.use(cors({
 }));
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Cora Chatbot Backend is running' });
+app.get('/welcome', (req, res) => {
+  res.json({
+    reply: "Hello 👋 Welcome to Cora Global Solutions. Tell me how I can help you with travel, marketing, analytics, or web development."
+  });
 });
 
 // Routes
@@ -39,4 +41,12 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Cora Chatbot Backend running on port ${PORT}`);
   console.log(`🤖 Ready to handle conversations with OpenAI`);
+  
+  // Check if API key is configured
+  if (process.env.OPENAI_API_KEY) {
+    console.log('✅ OpenAI API key is configured');
+  } else {
+    console.warn('⚠️  OpenAI API key is NOT configured. Chatbot will use fallback responses.');
+    console.warn('📝 To enable full AI capabilities, set OPENAI_API_KEY in your environment variables.');
+  }
 });

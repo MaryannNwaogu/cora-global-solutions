@@ -41,6 +41,34 @@ function generateSessionId() {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
+// Fallback responses for when OpenAI API is not available
+function getFallbackResponse(userMessage) {
+  const msg = userMessage.toLowerCase();
+  
+  // Travel-related queries
+  if (msg.includes('travel') || msg.includes('flight') || msg.includes('book')) {
+    return '✈️ We offer premium executive travel services including flight bookings, corporate travel management, and travel arrangements. Contact us at +234 913 088 0553 or info@coraglobalsolutions.com for a consultation!';
+  }
+  
+  // Data analytics queries
+  if (msg.includes('data') || msg.includes('analytics') || msg.includes('analytics')) {
+    return '📊 Our data analytics services provide business intelligence, data insights, and consulting. We help businesses make data-driven decisions. Reach out to discuss your analytics needs!';
+  }
+  
+  // Marketing queries
+  if (msg.includes('market') || msg.includes('seo') || msg.includes('marketing') || msg.includes('digital')) {
+    return '📈 We specialize in digital marketing including SEO optimization, content marketing, social media management, and digital campaigns. Let\'s grow your brand together!';
+  }
+  
+  // Contact information
+  if (msg.includes('contact') || msg.includes('phone') || msg.includes('email') || msg.includes('address')) {
+    return '📞 **Contact Cora Global Solutions:**\n\n📧 Email: info@coraglobalsolutions.com\n📱 Phone: +234 913 088 0553\n💬 WhatsApp: https://wa.me/2349130880553\n📍 Address: E 304 Rd3, Ikota shopping Complex, Lekki 106104, Lagos, Nigeria';
+  }
+  
+  // Default greeting
+  return '👋 Hello! I\'m Cora, your AI assistant. I can help you with travel bookings, data analytics, or digital marketing services. What can I assist you with today?';
+}
+
 // POST /api/chat/message - Handle chatbot responses
 router.post('/message', async (req, res) => {
   try {
@@ -67,63 +95,88 @@ router.post('/message', async (req, res) => {
       history = history.slice(-20);
     }
 
-    try {
-      // Call OpenAI API with conversation history
-      const response = await openai.chat.completions.create({
-        model: 'gpt-4o', // Using latest available model
-        messages: [
-          {
-            role: 'system',
-            content: SYSTEM_PROMPT
-          },
-          ...history
-        ],
-        temperature: 0.7,
-        max_tokens: 300,
-        top_p: 0.9,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5
-      });
+    let assistantMessage;
 
-      const assistantMessage = response.choices[0].message.content;
+    // Try to use OpenAI API if key is available
+    if (process.env.OPENAI_API_KEY) {
+      try {
+        // Call OpenAI API with conversation history
+        const response = await openai.chat.completions.create({
+          model: 'gpt-4o', // Using latest available model
+          messages: [
+            {
+              role: 'system',
+              content: SYSTEM_PROMPT
+            },
+            ...history
+          ],
+          temperature: 0.7,
+          max_tokens: 300,
+          top_p: 0.9,
+          frequency_penalty: 0.5,
+          presence_penalty: 0.5
+        });
 
-      // Add assistant response to history
-      history.push({
-        role: 'assistant',
-        content: assistantMessage
-      });
+        assistantMessage = response.choices[0].message.content;
 
-      // Save updated history
-      conversationHistory.set(session, history);
+        // Add assistant response to history
+        history.push({
+          role: 'assistant',
+          content: assistantMessage
+        });
 
-      res.json({
-        response: assistantMessage,
-        sessionId: session,
-        model: response.model,
-        usage: {
-          prompt_tokens: response.usage.prompt_tokens,
-          completion_tokens: response.usage.completion_tokens,
-          total_tokens: response.usage.total_tokens
+        // Save updated history
+        conversationHistory.set(session, history);
+
+        return res.json({
+          response: assistantMessage,
+          sessionId: session,
+          model: response.model,
+          usage: {
+            prompt_tokens: response.usage.prompt_tokens,
+            completion_tokens: response.usage.completion_tokens,
+            total_tokens: response.usage.total_tokens
+          }
+        });
+
+      } catch (openaiError) {
+        console.error('OpenAI API Error:', openaiError);
+        
+        // Check for specific error types
+        if (openaiError.status === 401) {
+          console.warn('Invalid OpenAI API key. Using fallback responses.');
+          // Fall through to fallback
+        } else if (openaiError.status === 429) {
+          return res.status(429).json({ 
+            error: 'Rate limit exceeded. Please try again later.' 
+          });
+        } else {
+          console.warn('OpenAI API error, using fallback responses:', openaiError.message);
+          // Fall through to fallback
         }
-      });
-
-    } catch (openaiError) {
-      console.error('OpenAI API Error:', openaiError);
-      
-      // Check for specific error types
-      if (openaiError.status === 401) {
-        return res.status(401).json({ 
-          error: 'Invalid OpenAI API key. Please check your configuration.' 
-        });
       }
-      if (openaiError.status === 429) {
-        return res.status(429).json({ 
-          error: 'Rate limit exceeded. Please try again later.' 
-        });
-      }
-      
-      throw openaiError;
+    } else {
+      console.warn('OpenAI API key not configured. Using fallback responses.');
     }
+
+    // Use fallback response
+    assistantMessage = getFallbackResponse(trimmedMessage);
+
+    // Add assistant response to history
+    history.push({
+      role: 'assistant',
+      content: assistantMessage
+    });
+
+    // Save updated history
+    conversationHistory.set(session, history);
+
+    res.json({
+      response: assistantMessage,
+      sessionId: session,
+      model: 'fallback',
+      note: 'Using fallback responses. Set OPENAI_API_KEY in environment for full AI capabilities.'
+    });
 
   } catch (error) {
     console.error('Chat Error:', error);
