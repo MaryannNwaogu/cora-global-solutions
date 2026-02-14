@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book flights and schedule consultations with Cora Global Solutions">
+  <meta name="keywords" content="flight booking, consultation, travel services">
+  
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CORA GLOBAL SOLUTIONS LTD",
+    "url": "https://coraglobal.com",
+    "telephone": "+2349130880553",
+    "email": "info@coraglobalsolutions.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "E 304 Rd3, Ikota shopping Complex",
+      "addressLocality": "Lagos",
+      "addressRegion": "Lagos",
+      "postalCode": "106104",
+      "addressCountry": "NG"
+    }
+  }
+  </script>
+  
+  <title>Book Travel or Consultation - Cora Global Solutions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .booking-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .booking-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .booking-tab {
+      background: none;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #999;
+      position: relative;
+      transition: var(--transition);
+    }
+    
+    .booking-tab.active {
+      color: var(--secondary);
+    }
+    
+    .booking-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--secondary);
+    }
+    
+    .booking-form {
+      display: none;
+      animation: slideInUp 0.6s ease;
+    }
+    
+    .booking-form.active {
+      display: block;
+    }
+    
+    .form-section {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid rgba(0, 168, 232, 0.2);
+    }
+  </style>
+</head>
+<body id="main-content">
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link"><img src="assets/logo.png" alt="Cora Global Solutions" class="logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Hero -->
+  <section class="hero" style="padding: 0; position: relative; min-height: 400px; display: flex; align-items: center;">
+    <img src="assets/booking-hero.jpg" alt="Book Flight Tickets" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3); z-index: 1;"></div>
+    <div class="container" style="position: relative; z-index: 2; text-align: center; color: white;">
+      <div class="hero-content reveal">
+        <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Book Flight Tickets</h1>
+        <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.2rem;">Secure your trip with ease</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Booking Section -->
+  <section class="section">
+    <div class="booking-container">
+      <!-- Tabs -->
+      <div class="booking-tabs">
+        <button class="booking-tab active" data-tab="flight">✈️ Flight Booking</button>
+        <button class="booking-tab" data-tab="consultation">📅 Consultation</button>
+      </div>
+      
+      <!-- ============================================
+           FLIGHT BOOKING FORM
+           ============================================ -->
+      
+      <form class="booking-form active" id="flightForm" data-tab="flight">
+        <div class="form-success">
+          ✅ Thank you! Your flight booking request has been submitted successfully. We'll contact you within 2 hours to confirm your booking.
+        </div>
+        
+        <!-- Personal Information -->
+        <div class="form-section">
+          <div class="section-title">👤 Your Information</div>
+          
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required onkeyup="formatPhoneNumber(this)">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Travel Details -->
+        <div class="form-section">
+          <div class="section-title">✈️ Travel Details</div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="departureCity">Departure City *</label>
+              <input type="text" id="departureCity" name="departureCity" placeholder="e.g., Lagos" required>
+            </div>
+            <div class="form-group">
+              <label for="destinationCity">Destination City *</label>
+              <input type="text" id="destinationCity" name="destinationCity" placeholder="e.g., London" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="departureDate">Departure Date *</label>
+              <input type="date" id="departureDate" name="departureDate" required>
+            </div>
+            <div class="form-group">
+              <label for="returnDate">Return Date</label>
+              <input type="date" id="returnDate" name="returnDate">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="passengers">Number of Passengers *</label>
+              <input type="number" id="passengers" name="passengers" min="1" value="1" required>
+            </div>
+            <div class="form-group">
+              <label for="airline">Preferred Airline *</label>
+              <select id="airline" name="airline" required>
+                <option value="">Select Airline</option>
+                <option value="air-peace">Air Peace</option>
+                <option value="united">United Airlines</option>
+                <option value="nigeria-air">Nigeria Air</option>
+                <option value="arik-air">Arik Air</option>
+                <option value="dana-air">Dana Air</option>
+                <option value="emirates">Emirates</option>
+                <option value="british-airways">British Airways</option>
+                <option value="lufthansa">Lufthansa</option>
+                <option value="swiss">Swiss International</option>
+                <option value="other">Other/No Preference</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="travelClass">Travel Class *</label>
+              <select id="travelClass" name="travelClass" required>
+                <option value="">Select Class</option>
+                <option value="economy">Economy</option>
+                <option value="business">Business</option>
+                <option value="firstclass">First Class</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Additional Info -->
+        <div class="form-section">
+          <div class="section-title">📝 Additional Information</div>
+          
+          <div class="form-group">
+            <label for="notes">Additional Notes or Preferences</label>
+            <textarea id="notes" name="notes" placeholder="Any special requests or requirements?"></textarea>
+          </div>
+        </div>
+        
+        <button type="submit" class="cta-button" style="width: 100%; padding: 1rem; font-size: 1rem;">
+          Submit Flight Booking Request
+        </button>
+      </form>
+      
+      <!-- ============================================
+           CONSULTATION BOOKING FORM
+           ============================================ -->
+      
+      <form class="booking-form" id="consultationForm" data-tab="consultation">
+        <div class="form-success">
+          ✅ Thank you! Your consultation request has been received. We'll schedule your call within 24 hours.
+        </div>
+        
+        <!-- Personal Information -->
+        <div class="form-section">
+          <div class="section-title">👤 Your Information</div>
+          
+          <div class="form-group">
+            <label for="consultFullName">Full Name *</label>
+            <input type="text" id="consultFullName" name="fullName" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="consultEmail">Email Address *</label>
+              <input type="email" id="consultEmail" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="consultPhone">Phone Number *</label>
+              <input type="tel" id="consultPhone" name="phone" required onkeyup="formatPhoneNumber(this)">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Your company name">
+          </div>
+        </div>
+        
+        <!-- Service Selection -->
+        <div class="form-section">
+          <div class="section-title">🎯 Service Inquiry</div>
+          
+          <div class="form-group">
+            <label for="serviceType">Service Type *</label>
+            <select id="serviceType" name="serviceType" required>
+              <option value="">Select Service</option>
+              <option value="travel">Travel Services</option>
+              <option value="data">Data Analytics & Consulting</option>
+              <option value="marketing">Digital Marketing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Appointment Details -->
+        <div class="form-section">
+          <div class="section-title">📅 Appointment Preferences</div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="preferredDate">Preferred Date *</label>
+              <input type="date" id="preferredDate" name="preferredDate" required>
+            </div>
+            <div class="form-group">
+              <label for="preferredTime">Preferred Time *</label>
+              <select id="preferredTime" name="preferredTime" required>
+                <option value="">Select Time</option>
+                <option value="09:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="17:00">5:00 PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Message -->
+        <div class="form-section">
+          <div class="section-title">📝 Tell Us More</div>
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" minlength="10" placeholder="Describe your consultation needs in detail..." required></textarea>
+          </div>
+        </div>
+        
+        <button type="submit" class="cta-button" style="width: 100%; padding: 1rem; font-size: 1rem;">
+          Schedule Consultation
+        </button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section" style="background: linear-gradient(135deg, #1a3a52 0%, #2d5a8c 100%); color: white;">
+    <div class="container text-center reveal">
+      <h2 style="color: white; margin-bottom: 1rem;">Still Have Questions?</h2>
+      <p style="color: #e0e0e0; margin-bottom: 2rem;">
+        Our chat assistant is available 24/7 to help you. Press 'C' or click the chat button to get started.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About Cora</h4>
+          <p>Premium consulting and travel services for global businesses.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html">Travel Booking</a></li>
+            <li><a href="index.html">Consulting</a></li>
+            <li><a href="index.html">Digital Marketing</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html">Support</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li>� E 304 Rd3, Ikota shopping Complex, V.G.C, Lekki 106104, Lagos, Nigeria</li>
+            <li>📱 <a href="tel:+2349130880553">+234 913 088 0553</a></li>
+            <li>💬 <a href="https://wa.me/2349130880553" target="_blank">WhatsApp</a></li>
+            <li>📧 <a href="mailto:info@coraglobalsolutions.com">info@coraglobalsolutions.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cora Global Solutions LTD. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/script.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/chatbot.js"></script>
+  
+  <script>
+    // Tab Switching
+    document.querySelectorAll('.booking-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all tabs and forms
+        document.querySelectorAll('.booking-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.booking-form').forEach(f => f.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding form
+        tab.classList.add('active');
+        const tabName = tab.dataset.tab;
+        document.querySelector(`.booking-form[data-tab="${tabName}"]`).classList.add('active');
+      });
+    });
+    
+    // Handle URL parameter for direct tab selection
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    if (tab) {
+      const tabButton = document.querySelector(`[data-tab="${tab}"]`);
+      if (tabButton) {
+        tabButton.click();
+      }
+    }
+  </script>
+</body>
+</html>

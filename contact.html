@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Cora Global Solutions - Premium travel, consulting, and digital marketing services">
+  <meta name="keywords" content="contact us, support, consulting, travel booking, digital marketing">
+  <meta name="author" content="Cora Global Solutions">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Contact Cora Global Solutions">
+  <meta property="og:description" content="Get in touch with our team for travel, consulting, and marketing services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coraglobal.com/contact.html">
+  
+  <!-- Contact Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CORA GLOBAL SOLUTIONS LTD",
+    "url": "https://coraglobal.com",
+    "telephone": "+2349130880553",
+    "email": "info@coraglobalsolutions.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "E 304 Rd3, Ikota shopping Complex",
+      "addressLocality": "Lagos",
+      "addressRegion": "Lagos",
+      "postalCode": "106104",
+      "addressCountry": "NG"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+2349130880553",
+        "contactType": "Customer Service",
+        "areaServed": "NG",
+        "availableLanguageId": "en"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/cora-global",
+      "https://twitter.com/coraglobal",
+      "https://www.facebook.com/coraglobal"
+    ]
+  }
+  </script>
+  
+  <title>Contact Cora Global Solutions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    
+    .contact-form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .contact-form h3 {
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.1);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5a8c 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 58, 82, 0.3);
+    }
+    
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .info-card {
+      background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+      padding: 2rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--secondary);
+    }
+    
+    .info-card-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .info-card-icon {
+      font-size: 2rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .info-card-content {
+      color: #555;
+      line-height: 1.8;
+    }
+    
+    .info-card-content a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .info-card-content a:hover {
+      text-decoration: underline;
+    }
+    
+    .contact-methods {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: white;
+      border: 2px solid var(--secondary);
+      border-radius: 6px;
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .contact-button:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .business-hours {
+      background: linear-gradient(135deg, rgba(0, 168, 232, 0.1) 0%, rgba(29, 53, 87, 0.05) 100%);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    
+    .business-hours h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    .hours-list {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    
+    .hours-list span {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .map-section {
+      margin-top: 4rem;
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5a8c 100%);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+    }
+    
+    .map-section h3 {
+      color: white;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .map-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #f0f0f0;
+    }
+    
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .form-success {
+      display: none;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      animation: slideInDown 0.4s ease;
+    }
+    
+    .form-success.show {
+      display: block;
+    }
+    
+    .form-error {
+      display: none;
+      color: #dc3545;
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+    }
+    
+    .form-error.show {
+      display: block;
+    }
+    
+    input.error,
+    textarea.error,
+    select.error {
+      border-color: #dc3545 !important;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .contact-form {
+        padding: 1.5rem;
+      }
+      
+      .contact-container {
+        padding: 2rem 1rem;
+      }
+      
+      .contact-methods {
+        flex-direction: column;
+      }
+      
+      .contact-button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .map-section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body id="main-content">
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link"><img src="assets/logo.png" alt="Cora Global Solutions" class="logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="booking.html" class="cta-button">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 6rem 0 4rem;">
+    <div class="container">
+      <div class="hero-content reveal">
+        <h1>Get In Touch With Us</h1>
+        <p>Have questions about our services? Our team is ready to help. Contact us today!</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="contact-container">
+      <div class="contact-grid">
+        
+        <!-- Contact Form -->
+        <div class="contact-form reveal">
+          <h3>📧 Send us a Message</h3>
+          <form id="contactForm">
+            <div class="form-success">
+              ✅ Thank you! Your message has been received. We'll get back to you within 2 hours.
+            </div>
+            
+            <div class="form-group">
+              <label for="contactName">Full Name *</label>
+              <input type="text" id="contactName" name="fullName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" name="phone" onkeyup="formatPhoneNumber(this)">
+            </div>
+            
+            <div class="form-group">
+              <label for="contactSubject">Subject *</label>
+              <input type="text" id="contactSubject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contactMessage">Message *</label>
+              <textarea id="contactMessage" name="message" minlength="10" required placeholder="Tell us more about your inquiry..."></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">Send Message</button>
+          </form>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="contact-info reveal">
+          
+          <!-- Phone Card -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <div class="info-card-icon">📱</div>
+              <span>Phone</span>
+            </div>
+            <div class="info-card-content">
+              <p>Call us for immediate assistance</p>
+              <a href="tel:+2349130880553">+234 913 088 0553</a>
+              <div class="contact-methods">
+                <a href="tel:+2349130880553" class="contact-button">Call Us</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Email Card -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <div class="info-card-icon">📧</div>
+              <span>Email</span>
+            </div>
+            <div class="info-card-content">
+              <p>Reach us via email for detailed inquiries</p>
+              <a href="mailto:info@coraglobalsolutions.com">info@coraglobalsolutions.com</a>
+              <div class="contact-methods">
+                <a href="mailto:info@coraglobalsolutions.com" class="contact-button">Send Email</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- WhatsApp Card -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <div class="info-card-icon">💬</div>
+              <span>WhatsApp</span>
+            </div>
+            <div class="info-card-content">
+              <p>Chat with us on WhatsApp for quick responses</p>
+              <a href="https://wa.me/2349130880553" target="_blank">Message on WhatsApp</a>
+              <div class="contact-methods">
+                <a href="https://wa.me/2349130880553" target="_blank" class="contact-button">Open WhatsApp</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Location Card -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <div class="info-card-icon">📍</div>
+              <span>Office Location</span>
+            </div>
+            <div class="info-card-content">
+              <p>Cora Global Solutions LTD<br>
+              E 304 Rd3, Ikota shopping Complex<br>
+              V.G.C, Lekki 106104<br>
+              Lagos, Nigeria</p>
+              
+              <div class="business-hours">
+                <h4>Business Hours</h4>
+                <div class="hours-list">
+                  <span>🕘 Monday - Friday: 9:00 AM - 6:00 PM WAT</span><br>
+                  <span>🕘 Saturday: 10:00 AM - 4:00 PM WAT</span><br>
+                  <span>🕘 Sunday: Closed (Chat Support 24/7)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+      <!-- Map Section -->
+      <div class="map-section reveal">
+        <h3>Visit Our Office</h3>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5520874788433!2d3.5236723!3d6.4341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b6db8b8b8b9%3A0x5b8b8b8b8b8b8b8b!2sIkota%20shopping%20complex!5e0!3m2!1sen!2sng!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section" style="background: linear-gradient(135deg, #1a3a52 0%, #2d5a8c 100%); color: white;">
+    <div class="container text-center reveal">
+      <h2 style="color: white; margin-bottom: 1rem;">Ready to Discuss Your Project?</h2>
+      <p style="color: #e0e0e0; margin-bottom: 2rem;">
+        Book a consultation with our experts to explore how we can help your business grow.
+      </p>
+      <a href="booking.html?tab=consultation" class="cta-button" style="background: #ffd700; color: #1a3a52;">
+        📅 Schedule a Consultation
+      </a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>Cora Global Solutions is a premium consulting firm providing travel, data analytics, and digital marketing solutions.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="booking.html">Travel Booking</a></li>
+            <li><a href="booking.html?tab=consultation">Data Consultation</a></li>
+            <li><a href="booking.html?tab=consultation">Digital Marketing</a></li>
+            <li><a href="blog.html">Blog & Resources</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li>📍 E 304 Rd3, Ikota shopping Complex, V.G.C, Lekki 106104, Lagos, Nigeria</li>
+            <li>📱 <a href="tel:+2349130880553">+234 913 088 0553</a></li>
+            <li>💬 <a href="https://wa.me/2349130880553" target="_blank">WhatsApp us</a></li>
+            <li>📧 <a href="mailto:info@coraglobalsolutions.com">info@coraglobalsolutions.com</a></li>
+          </ul>
+          <div class="social-links" style="margin-top: 1rem; display: flex; gap: 1rem;">
+            <a href="https://facebook.com/coraglobal" target="_blank" title="Facebook" aria-label="Facebook">f</a>
+            <a href="https://instagram.com/coraglobal" target="_blank" title="Instagram" aria-label="Instagram">📷</a>
+            <a href="https://linkedin.com/company/cora-global" target="_blank" title="LinkedIn" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cora Global Solutions LTD. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/script.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/chatbot.js"></script>
+  
+  <script>
+    // Phone number formatting
+    function formatPhoneNumber(input) {
+      let value = input.value.replace(/\D/g, '');
+      if (value.startsWith('234')) {
+        value = value.substring(1);
+      }
+      if (value.length > 0) {
+        if (value.length <= 3) {
+          input.value = value;
+        } else if (value.length <= 7) {
+          input.value = value.slice(0, 3) + ' ' + value.slice(3);
+        } else {
+          input.value = value.slice(0, 3) + ' ' + value.slice(3, 7) + ' ' + value.slice(7, 11);
+        }
+      }
+    }
+    
+    // Add reveal animation classes
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    reveals.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'all 0.6s ease';
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>

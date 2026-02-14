@@ -1,0 +1,22 @@
+# Cora Global Solutions - Robots.txt
+# This file tells search engines which pages to crawl
+
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /blog/
+
+# Disallow admin and private areas (none in our case, but for reference)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow specific files
+Allow: /robots.txt
+Allow: /sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://coraglobal.com/sitemap.xml
